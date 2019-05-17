@@ -6,12 +6,19 @@ class OrdersController < ApplicationController
   end
 
   def create
-    charge = perform_stripe_charge
+    charge = perform_stripe_char
     order  = create_order(charge)
 
     if order.valid?
       empty_cart!
+
+      url = order_url order.id
+
+      ReceiptMailer.receipt_email(order, url).deliver_now
+
       redirect_to order, notice: 'Your Order has been placed.'
+
+
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
