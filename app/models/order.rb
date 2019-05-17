@@ -6,5 +6,5 @@ class Order < ActiveRecord::Base
   monetize :total_cents, numericality: true
 
   validates :stripe_charge_id, presence: true
-
+  has_many :products, through: :line_items
 end
