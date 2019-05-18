@@ -153,24 +153,31 @@ User.create!({
   password_digest: "test"
 })
 
+User.create!({
+  first_name: "rrob",
+  last_name: "lee",
+  email: "rob@portamini.com",
+  password_digest: "test"
+})
+
 Review.create!({
-  product_id: 1
-  user_id: 1
-  description: "the thing is amazing"
+  product_id: 1,
+  user_id: 1,
+  description: "the thing is amazing",
   rating: 3
 })
 
 Review.create!({
-  product_id: 1
-  user_id: 2
-  description: "the thing was great"
+  product_id: 1,
+  user_id: 2,
+  description: "the thing was great",
   rating: 3
 })
 
 Review.create!({
-  product_id: 2
-  user_id: 1
-  description: "the thing sucked"
+  product_id: 2,
+  user_id: 1,
+  description: "the thing sucked",
   rating: 3
 })
 

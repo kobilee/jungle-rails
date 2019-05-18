@@ -25,7 +25,24 @@
         </dl>
       </div>
     </div>
+    <%= form_for [@product, @review] do |f| %>
+      <h3>New review</h3>
+      <div class="field">
+         <%= f.label :Review %>
+        <%= f.text_area :description %>
+        <%= f.label :Rating %>
+        <%= f.select :rating, options_for_select([1,2,3,4,5]) %>
+      </div>
 
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+    <div>
+       <% @product.reviews.each do |review| %>
+            <%= render 'review', review: review%>
+      <% end %>
+    </div>
   </article>
 
 </section>
