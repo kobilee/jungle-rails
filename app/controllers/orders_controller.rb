@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    charge = perform_stripe_char
+    charge = perform_stripe_charge
     order  = create_order(charge)
 
     if order.valid?
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
 
       url = order_url order.id
 
-      ReceiptMailer.receipt_email(order, url).deliver_now
+      ReceiptMailer.receipt_email(order).deliver_now
 
       redirect_to order, notice: 'Your Order has been placed.'
 

@@ -3,6 +3,6 @@ class ReceiptMailer < ApplicationMailer
 
   def receipt_email(order)
     @order = order
-    mail(to: @order.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @order.email, subject: 'Jungle receipt')
   end
 end
